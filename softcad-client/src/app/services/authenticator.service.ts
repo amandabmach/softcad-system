@@ -11,17 +11,17 @@ export class AuthenticatorService {
   private userid!: number | null;
 
   setToken(data: any){
-    var { token } = data;
+    let { token } = data;
     this.token = token;
 
-    var { id } = JSON.parse(JSON.stringify(jwt_decode.jwtDecode(token)));
+    let { id } = JSON.parse(JSON.stringify(jwt_decode.jwtDecode(token)));
     this.userid = id;
 
     localStorage.setItem('token', token);
   }
 
   getToken(){
-    var token = localStorage.getItem('token');
+    let token = localStorage.getItem('token');
     if (this.token != null) {
       return this.token;
     } else if (token != null){
@@ -32,7 +32,7 @@ export class AuthenticatorService {
   }
 
   getIdAdmin(){
-    var token = localStorage.getItem('token');
+    let token = localStorage.getItem('token');
     if(this.userid != null){
       return this.userid;
     } else if( token != null){
@@ -44,7 +44,7 @@ export class AuthenticatorService {
   }
 
   userAuthenticated(){
-    var token = localStorage.getItem('token');
+    let token = localStorage.getItem('token');
     if(token != null){
       return true;
     }

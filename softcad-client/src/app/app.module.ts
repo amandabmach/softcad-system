@@ -19,7 +19,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterLink, provideRouter } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard, authGuard } from './guards/auth-guard';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt-interceptor.service';
 import { ConfirmModalComponent } from './shared/components/modal-confirm/confirm-modal.component';

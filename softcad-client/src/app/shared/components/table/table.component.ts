@@ -1,5 +1,5 @@
 import { Usuario } from '../../../models/usuario';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UsersRequestService } from '../../../services/requests/users-request.service';
 import { SearchService } from '../../../services/search.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy{
 
   usersChanged!: Subscription;
   visibility!: boolean;

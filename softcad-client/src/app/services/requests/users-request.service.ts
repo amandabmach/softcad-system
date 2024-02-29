@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, catchError, of, retry, tap, throwError } from 'rxjs';
+import { Observable, Subject, catchError, retry, tap, throwError } from 'rxjs';
 import { Usuario } from '../../models/usuario';
 
 @Injectable({

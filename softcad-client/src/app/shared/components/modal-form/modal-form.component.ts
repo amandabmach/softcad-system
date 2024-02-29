@@ -1,15 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersRequestService } from '../../../services/requests/users-request.service';
 import { AlertService } from '../../../services/alert.service';
-import { EMPTY, Observable, catchError, finalize, map } from 'rxjs';
 
 @Component({
   selector: 'app-modal-form',
   templateUrl: './modal-form.component.html',
   styleUrl: './modal-form.component.scss'
 })
-export class ModalFormComponent implements OnInit {
+export class ModalFormComponent implements OnInit, OnChanges {
 
   @Input() user: any | null;
   @Input() visibility!: boolean;
@@ -62,7 +61,7 @@ export class ModalFormComponent implements OnInit {
     if (this.formulario.valid) {
       this.alert.showConfirm("Atualizar usuário", "Tem certeza que deseja atualizar os dados do usuário?", "Sim", "Não").subscribe(dados => {
         if (dados) {
-          let body = { ...this.formulario.value, id: this.user?.id, dataCadastro: this.user?.dataCadastro};
+          const body = { ...this.formulario.value, id: this.user?.id, dataCadastro: this.user?.dataCadastro};
           this.service.updateUser(body).subscribe({
             next: () => this.alert.showAlertSuccess("Usuário atualizado com sucesso!"),
             error: () => this.alert.showAlertError("Erro ao atualizar usuário"),

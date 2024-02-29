@@ -1,5 +1,3 @@
-import { Subject } from 'rxjs';
-import { Administrador } from './../models/administrador';
 import { Injectable } from '@angular/core';
 
 @Injectable({

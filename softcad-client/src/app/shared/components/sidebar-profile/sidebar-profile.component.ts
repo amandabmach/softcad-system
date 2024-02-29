@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../../services/alert.service';
 import { AdminsRequestService } from '../../../services/requests/admins-request.service';
@@ -10,7 +10,7 @@ import { AdministradorService } from '../../../services/administrador.service';
   templateUrl: './sidebar-profile.component.html',
   styleUrl: './sidebar-profile.component.scss'
 })
-export class SidebarProfileComponent {
+export class SidebarProfileComponent implements OnInit{
 
   formulario!: FormGroup;
 

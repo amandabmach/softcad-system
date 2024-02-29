@@ -1,5 +1,5 @@
 import { UsersRequestService } from '../../services/requests/users-request.service';
-import { Component, HostListener, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardRequestService } from '../../services/requests/dashboard-request.service';
 
 @Component({

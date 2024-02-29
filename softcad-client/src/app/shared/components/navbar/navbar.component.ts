@@ -1,4 +1,4 @@
-import { Component, HostListener, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AdminsRequestService } from '../../../services/requests/admins-request.service';
 import { SearchService } from '../../../services/search.service';
 import { AdministradorService } from '../../../services/administrador.service';
@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit{
       var admin = dados;
       if(admin.foto != null){
         this.service.getPhotoProfile().subscribe(foto =>{
-          let url = URL.createObjectURL(foto);
+          const url = URL.createObjectURL(foto);
           this.adminservice.setAdminPhoto(admin, url);
           this.admin = this.adminservice.getAdministrador();
         })

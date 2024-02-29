@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { AlertService} from '../../services/alert.service';
   templateUrl: './create-account.component.html',
   styleUrl: './create-account.component.scss'
 })
-export class CreateAccountComponent {
+export class CreateAccountComponent implements OnInit{
   formulario!: FormGroup;
   
   constructor(

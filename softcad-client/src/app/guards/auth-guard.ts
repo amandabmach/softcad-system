@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthenticatorService } from '../services/authenticator.service';
 
@@ -10,10 +10,7 @@ export class AuthGuard {
   constructor() { }
 }
 
-export const authGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const authGuard: CanActivateFn = () => {
   
   return inject(AuthenticatorService).userAuthenticated()
     ? true

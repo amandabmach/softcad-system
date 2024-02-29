@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertModalComponent } from '../shared/components/modal-alert/alert-modal.component';
 import { ConfirmModalComponent } from '../shared/components/modal-confirm/confirm-modal.component';
-import { ModalFormComponent } from '../shared/components/modal-form/modal-form.component';
 
 export enum AlertTypes {
   ERROR = 'error',

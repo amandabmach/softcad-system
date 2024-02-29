@@ -1,5 +1,5 @@
 import { Log } from '../../models/log';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LogsRequestService } from '../../services/requests/logs-request.service';
 import { format } from 'date-fns';
 
@@ -8,7 +8,7 @@ import { format } from 'date-fns';
   templateUrl: './log-control.component.html',
   styleUrl: './log-control.component.scss'
 })
-export class LogControlComponent {
+export class LogControlComponent implements OnInit{
 
   visibility: boolean = true;
   resultado!: string;
@@ -18,7 +18,6 @@ export class LogControlComponent {
   data!: Log[];
 
   modal!: boolean;
-  date: any;
 
   constructor(private service: LogsRequestService) { }
 
@@ -29,7 +28,7 @@ export class LogControlComponent {
   getLogs() {
     this.service.getLogs().subscribe(logs => {
       logs = logs.map(log => {
-        let timestampFormatado = format(new Date(log.timestamp), 'dd/MM/yyyy HH:mm:ss');
+        const timestampFormatado = format(new Date(log.timestamp), 'dd/MM/yyyy HH:mm:ss');
         return { ...log, timestamp: timestampFormatado };
       });
       this.data = logs;
