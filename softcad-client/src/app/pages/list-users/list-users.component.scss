@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+main{
+    display: flex;
+    flex-direction: column;
+    float: inline-end;
+    margin: 10px;
+    border-radius: 5px;
+    width: 80vw;
+    height: 85vh;
+    background-color: #ffffff;
+}
+
+#legenda{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 0em 0em 1em;
+}
+
+#legenda > h3{
+    position: relative;
+    font-size: 16pt;
+    color: hsla(0, 0%, 0%, 0.500);
+    top: 5px;
+}
+
+#legenda > button{
+    background-color: #5763A0;
+    width: 100px;
+    height: 25px;
+    border-radius: 6px;
+    margin-right: 10px;
+    border:none;
+    color: white;
+}
+
+button > a {
+    text-decoration: none;
+    color: white;
+}
+

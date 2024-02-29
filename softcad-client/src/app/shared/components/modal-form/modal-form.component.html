@@ -1,0 +1,63 @@
+<div class="overlay" *ngIf="visibility" (click)="onChangeModal()"></div>
+<div class="myModal">
+    <div class="modal" *ngIf="visibility">
+        <div class="topo">
+            <div>
+                <img src="assets/imagens/user-modal.png" alt="icon-person">
+                <h3 class="titulo-modal">Dados do Usuário</h3>
+            </div>
+            <span class="close" (click)="onChangeModal()">&times;</span>
+        </div>
+        <form [formGroup]="formulario">
+            <div class="item ten">
+                <input type="text" id="nome" formControlName="nome" name="nome"
+                    placeholder="Nome">
+                <app-error-message [control]="formulario.get('nome')" label="nome"></app-error-message>
+            </div>
+            <div class="container-form">
+                <div class="item ten">
+                    <input type="email" formControlName="email" id="email" name="email"
+                        placeholder="Email">
+                    <app-error-message [control]="formulario.get('email')" label="email"></app-error-message>
+                </div>
+                <div class="item two">
+                    <input type="number" formControlName="idade" name="idade" id="idade"
+                        placeholder="Idade">
+                    <app-error-message [control]="formulario.get('idade')" label="idade"></app-error-message>
+                </div>
+            </div>
+            <div class="container-form">
+                <div class="item five">
+                    <input type="text" formControlName="endereco" name="endereco" id="endereco"
+                        placeholder="Endereço">
+                    <app-error-message [control]="formulario.get('endereco')" label="endereco"></app-error-message>
+                </div>
+                <div class="item ten">
+                    <input type="text" formControlName="informacoes" name="info" id="info" placeholder="Outras Informações">
+                </div>
+            </div>
+            <div class="item auto">
+                <label for="interesses">Interesses</label>
+                <textarea name="interesses" id="interesses" formControlName="interesses"
+                    cols="1" rows="2"></textarea>
+                <app-error-message [control]="formulario.get('interesses')" label="interesses"></app-error-message>
+            </div>
+            <div class="item auto">
+                <label for="sentimentos">Sentimentos</label>
+                <textarea name="sentimentos" id="sentimentos"
+                    formControlName="sentimentos" cols="1" rows="2"></textarea>
+                <app-error-message [control]="formulario.get('sentimentos')" label="sentimentos"></app-error-message>
+            </div>
+            <div class="item auto">
+                <label for="valores">Valores</label>
+                <textarea name="valores" id="valores" formControlName="valores" cols="1"
+                    rows="2"></textarea>
+                <app-error-message [control]="formulario.get('interesses')" label="email"></app-error-message>
+            </div>
+        </form>
+        <div class="botoes-model">
+            <button id="bt-deletar" (click)="onDelete()">Deletar</button>
+            <button id="bt-alterar" (click)="onUpdate()">Salvar alterações</button>
+        </div>
+    </div>
+</div>

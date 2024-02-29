@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\softcad-web-api.props" />
+</Project>

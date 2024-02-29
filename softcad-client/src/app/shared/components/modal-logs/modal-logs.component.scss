@@ -1,0 +1,149 @@
+.result.ng-invalid.ng-touched {
+    border:1px solid rgb(160, 0, 0);
+}
+
+.overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(0, 0%, 0%, 0.300);
+    z-index: 1;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 14px;
+    box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.1);
+    width: 55vw;
+    height: 90vh;
+    border-radius: 2px;
+    margin: 0;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.topo{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.199);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+input, textarea{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    border: none;
+    background-color: #ffffff;
+    border: 1px solid rgb(177, 177, 177);
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.8px;
+    padding: 4px;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+.topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topo > div > h3{
+    position: relative;
+    top: 6px;
+    left: 8px;
+    font-size: 13pt;
+    color: rgb(56, 56, 56);
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(83, 83, 83);
+}
+  
+.close:hover,
+.close:focus {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.topo > div{
+    display: flex;
+}
+
+.botoes-model{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.botoes-model > button{
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#bt-deletar{
+    width: 120px;
+    font-size: 10pt;
+    border: 1px solid #000000;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    padding: 1px;
+}
+
+#bt-alterar{
+    width: 180px;
+    font-size: 10pt;
+    border: 1px solid #000000;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    padding: 3px;
+
+}
+
+#bt-deletar:hover, #bt-alterar:hover{
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.288);
+}
+
+.container-form {
+    overflow: hidden;
+    display: flex;
+   // margin: 1em 0em 1em 0em;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 2em 0em 0.5em;
+    min-width: 0;
+    color: rgb(0, 0, 0);
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.initial { flex: initial; }
+.auto { flex: auto; }
+.ten { flex: 10; }
+.none { flex: none; }
+.seven { flex: 7; }
+.six { flex: 6; }
+.five { flex: 5; }
+.four { flex: 4; }
+.three { flex: 3; }
+.two { flex: 2; }
+.one { flex: 1; }
+
+

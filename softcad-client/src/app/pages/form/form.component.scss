@@ -1,0 +1,126 @@
+.result.ng-invalid.ng-touched {
+    border:1px solid rgb(160, 0, 0);
+}
+
+.prim-descricao{
+    position: relative;
+    color: hsla(0, 0%, 0%, 0.500);
+    top: 5px;
+    font-size: 16pt;
+}
+
+.descricao{
+    font-size: 12pt;
+    margin:0;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+    border-bottom: 1.8px solid #b6b6b6;
+    font-weight: bolder;
+}
+
+.page-content{
+    overflow: auto;
+    height: 85vh;
+    margin-left: 1em;
+}
+
+.fatos-dados{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em 1em 1em 0.2em;
+}
+
+.status{
+    display: flex;
+    margin: 0em 1em;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+}
+
+.status > input {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid #adadad;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+#informacoes{
+    margin-bottom: 16px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 2em 0em 0.5em;
+}
+
+button{
+    background-color: #61A057;
+    border-radius: 5px;
+    width: 120px;
+    border: none;
+    margin: 0px 0px 20px 0px;
+    color: white;
+    font-size: 10pt;
+    padding: 2px;
+}
+
+button:hover {
+    background-color: #45793e; 
+}
+
+button:active {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.500);
+}
+
+.status>input:checked {
+    background-color: #61A057;
+    border: none;
+}
+
+label{
+    color: #000000;
+    font-weight: 500;
+}
+
+input, textarea{
+    border: 1.8px solid #b8b8b8;
+    background-color:#FCFCFC;
+    padding: 4px;
+    font-family: var(--fonteRoboto);
+}
+
+.container-form {
+    overflow: hidden;
+    display: flex;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 2em 0em 0.5em;
+    min-width: 0;
+    color: rgb(0, 0, 0);
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.initial { flex: initial; }
+.auto { flex: auto; }
+.ten { flex: 10; }
+.none { flex: none; }
+.seven { flex: 7; }
+.six { flex: 6; }
+.five { flex: 5; }
+.four { flex: 4; }
+.three { flex: 3; }
+.two { flex: 2; }
+.one { flex: 1; }

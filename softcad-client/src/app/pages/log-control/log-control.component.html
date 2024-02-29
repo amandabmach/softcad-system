@@ -1,0 +1,49 @@
+<div class="page-content">
+    <div class="topo">
+        <h3>Controle de Logs</h3>
+    </div>
+    <div class="filtros">
+        <div class="container">
+            <div class="item three">
+                <label for="operacao">Operação</label>
+                <select name="operacao" id="operacao" [(ngModel)]="operation">
+                    <option value="Selecionar">Selecionar</option>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Criação">Criação</option>
+                    <option value="Alteração">Alteração</option>
+                    <option value="Remoção">Remoção</option>
+                </select>
+            </div>
+            <div class="item three">
+                <label for="responsavel">Resultado</label>
+                <select name="resultado" id="resultado" [(ngModel)]="resultado">
+                    <option value="Selecionar">Selecionar</option>
+                    <option value="SUCESSO">SUCESSO</option>
+                    <option value="FALHOU">FALHOU</option>
+                </select>
+            </div>
+            <div class="item six">
+                <label for="responsavel">Responsável</label>
+                <input type="text" name="responsavel" id="responsavel" [(ngModel)]="responsavel">
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <th>EMAIL DO USUÁRIO</th>
+            <th>OPERAÇÃO</th>
+            <th>DATA/HORA</th>
+            <th>RESULTADO</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of data | operation: operation | user: responsavel | result: resultado" 
+            (click)="logClicked(obj)">
+                <td>{{ obj.executorEmail }} </td>
+                <td>{{ obj.operation }}</td>
+                <td>{{ obj.timestamp }}</td>
+                <td>{{ obj.result }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-modal-logs [modal]="modal" [log]="log" (event)="modal = $event"></app-modal-logs>

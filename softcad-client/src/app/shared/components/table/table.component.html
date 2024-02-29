@@ -1,0 +1,16 @@
+<table>
+  <legend [ngStyle]="isPage ? {'display': 'block'} : {'display': 'none'}">Últimos cadastros</legend>
+  <thead>
+    <th>NOME</th>
+    <th>E-MAIL</th>
+    <th class="status">STATUS</th>
+  </thead>
+  <tbody>
+      <tr *ngFor="let user of filteredData" (click)="userClicked(user)" >
+      <td>{{user.nome}}</td>
+      <td>{{user.email}}</td>
+      <td class="status">{{user.status}}</td>
+    </tr>
+  </tbody>
+</table>
+<app-modal-form [visibility]="visibility" [user]="userSelected" (event)="visibility = $event"></app-modal-form>

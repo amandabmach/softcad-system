@@ -1,0 +1,46 @@
+<div class="overlay" (click)="onCloseSidebar()"></div>
+<div id="mySidenav" class="sidenav">
+    <div class="topo">
+        <div class="nome-config">Editar perfil</div>
+        <div class="closebtn"><a (click)="onCloseSidebar()">&times;</a></div>
+    </div>
+    <div class="foto-config">
+        <div class="redonda" (click)="addImage()">
+            <input type="file" #fileInput name="image-input" id="image-input" (change)="fileSelected($event)">
+            <img [src]="foto" accept="image/*" alt="Usuário" class="profile-photo">
+            <div class="overlay-image"><span class="material-symbols-outlined">edit</span></div>
+            <input type="file" name="image-input" id="image-input">
+        </div>
+    </div>
+    <div id="description-img"></div>
+    <form  [formGroup]="formulario">
+        <div class="dados">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" formControlName="nome">
+                <app-error-message [control]="formulario.get('nome')" label="nome"></app-error-message>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" formControlName="email">
+                <app-error-message [control]="formulario.get('email')" label="email"></app-error-message>
+            </div>
+            <div class="senha-config">
+                <div>
+                    <p>Alterar Senha</p>
+                    <label for="senha">Insira sua nova senha</label>
+                </div>
+                <div class="input-senha">
+                    <input type="password" name="senha" id="senha" formControlName="senha">
+                </div>
+                <app-error-message [control]="formulario.get('senha')" label="senha"></app-error-message>
+            </div>
+            <div class="botao"><button type="submit" class="bt-alterar" (click)="onUpdate()">Salvar alterações</button></div>
+            <div class="deletar-config">
+                <p>Deletar Conta</p>
+                <p class="txt-delete">Ao deletar sua conta, não há como voltar atrás. Por favor, tenha certeza.</p>
+                <div class="botao"><button id="bt-delete" (click)="onDelete()">Deletar conta permanentemente</button></div>
+            </div>
+        </div>
+    </form>
+</div>

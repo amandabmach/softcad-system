@@ -1,0 +1,243 @@
+.overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 0em 0.5em 0em;
+    font-size: 12pt;
+    font-weight: 500;
+}
+
+.closebtn {
+    width: 14px;
+    height: 0px;
+}
+
+.sidenav {
+    height: 100vh; 
+    width: 22vw; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    right: 0;
+    background-color: #f3f3f3;
+    overflow-x: hidden; 
+    transition: 0.5s; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #c4bdbd;
+    cursor: pointer;
+
+}
+
+.nome-config {
+    position: relative;
+    margin: 0;
+    font-size: 18pt;
+    font-weight: bolder;
+    padding-left: 10px;
+    font-family: var(--fonteRoboto);
+    
+}
+
+.overlay-image {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.575); 
+    transition: .5s ease; 
+    opacity:0; 
+    font-size: 15px;
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.foto-config{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.redonda > div > span{
+    display: block;
+    color:  white;
+    width: 60px;
+
+}
+
+.redonda{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #2f369d, #2E7021);
+}
+
+.redonda img{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+}
+
+.redonda:hover .overlay-image {
+    opacity: 1;
+}
+
+#image-input{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    z-index: -1;
+    cursor: pointer;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+} 
+
+#description-img{
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    font-size: 9pt;
+}
+
+.dados{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 5px;
+    color: rgb(65, 65, 65);
+}
+
+.dados label {
+    position: relative;
+    display: block;
+}
+
+.dados input{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 2px;
+    width: 21vw;
+    border: none;
+    margin: auto;
+    margin-right: 10px;
+    font-size: 10pt;
+}
+
+.senha-config{
+    display: flex;
+    flex-direction: column;
+}
+
+.senha-config > div{
+    margin-top: 10px;
+}
+
+.senha-config > div> p{
+    position: relative;
+    margin: 0;
+}
+
+.senha-config > div > label{
+    font-size: 10pt;
+    margin: 0;
+}
+
+.input-senha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-senha input{
+    display: flex;
+    width: 21vw;
+    margin: auto;
+    margin-right: 10px;
+}
+
+
+.deletar-config{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+}
+
+.deletar-config > p{
+    margin: 0;
+}
+
+.txt-delete{
+    font-size: 9pt;
+    color: #6b1414;
+}
+
+#bt-delete{
+    background-color: white;
+    color: #761919;
+    border: 1px solid rgb(219, 219, 219);
+    font-size: 11pt;
+    font-weight: bolder;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 21vw;
+    cursor: pointer;
+}
+
+.bt-alterar-senha{
+    height: 26px;
+    text-align: center;
+}
+
+.bt-alterar{
+    margin: auto;
+    background-color: white;
+    width: 21vw;
+    font-size: 11pt;
+    font-weight: bolder;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.208);
+    color: rgb(65, 65, 65);
+    margin-bottom: 5px;
+}
+.bt-alterar:hover{
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.100);
+    cursor: pointer;
+}
+#bt-delete:hover{
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.100);
+    cursor: pointer;
+}
+

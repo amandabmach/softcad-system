@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#legenda{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 0em 0em 1em;
+}
+
+#legenda > h3{
+    font-size: var(--fonteRoboto);
+    position: relative;
+    color: hsla(0, 0%, 0%, 0.500);
+    top: 5px;
+    font-size: 16pt;
+}
+
+#legenda > button{
+    background-color: #61A057;
+    width: 130px;
+    height: 30px;
+    border-radius: 6px;
+    border:none;
+    color: white;
+    margin-right: 10px;
+    font-size: 10pt;
+}
+#legenda > button > a{
+    text-decoration: none;
+    color: white;
+}

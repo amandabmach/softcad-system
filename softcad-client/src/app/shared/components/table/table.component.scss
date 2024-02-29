@@ -1,0 +1,101 @@
+@charset "UTF-8";
+/*
+table{
+    background-color: white;
+    margin-top: 10px;
+    font-size: 10pt;
+    border-radius: 5px;
+    border-collapse: collapse;
+    overflow-y: auto;
+    padding: 100px;
+}
+
+th, td{
+    width: 94vw;
+    font-size: 10pt;
+    color: #4E4E4E;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+    text-align: left;
+    padding: 4.5px; 
+    margin: 5px;
+} 
+
+.status{
+    position: relative;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+}*/
+
+
+@media screen and (min-width: 768px) {
+
+    table{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        min-height: 50vh;
+        width: 80vw;
+        color: #4E4E4E;
+
+        margin: 10px 0px 0px 0px;
+        padding: 0px 10px 0px 10px;
+        
+        overflow-y: auto;
+        text-align: justify;
+        font-family: var(--fonteRoboto);
+        border-radius: 5px;
+    }
+
+    td{
+        width: 26.1vw;
+        font-size: 10pt;
+        color: #4E4E4E;
+        padding: 4px; 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+        text-align: left;
+        padding: 4px; 
+    }
+
+    th{
+        width: 80vw;
+        font-size: 10pt;
+        color: #4E4E4E;
+        padding: 4px; 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+        text-align: left;
+        padding: 4px; 
+        font-weight: 500;
+        padding: 5px;
+    }
+
+    tr:hover {
+        background-color: rgb(243, 243, 243);
+        cursor: pointer;
+    }
+    .status{
+        text-align: center;
+    }
+
+    legend{
+        width: 170px;
+        margin: 10px 0px 5px 3px;
+        font-size:12pt;
+        font-family: var(--fonteRoboto);
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.507);
+    }
+    .teste{
+        width: 170px;
+        margin: 10px 0px 5px 3px;
+        font-size:12pt;
+        font-family: var(--fonteRoboto);
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.507);
+    }
+
+}
+

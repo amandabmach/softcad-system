@@ -1,0 +1,31 @@
+<div class="container-form">
+    <form class="item one" [formGroup]="formulario">
+        <h1>Acessar Conta</h1>
+        <div class="redes-sociais">
+            <a href="https://pt-br.facebook.com/login/device-based/regular/login/"><img src="assets/icones/redes-sociais/facebook.png" alt="icon-facebook"></a>
+            <a href="https://www.linkedin.com/login/pt?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin"><img src="assets/icones/redes-sociais/linkedin.png" alt="icon-linkedin"></a>
+            <a href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button&service=accountsettings&ifkv=ATuJsjwFU-aCR__9Z0wLaHMYnYtGK9croiKD-_De42LVKcaOO2jktyrFoaPNhk94rmmypKBRX353Sw&theme=glif&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img src="assets/icones/redes-sociais/social.png" alt="icon-facebook"></a>
+        </div>
+        <p class="small">ou use sua conta de email:</p>
+        <div>
+            <input type="text" formControlName="email" name="email" id="email" placeholder="usuario@gmail.com" autocomplete="email">
+            <app-error-message [control]="formulario.get('email')" label="email"></app-error-message>
+        </div>
+        <div>
+            <input type="password" formControlName="senha" name="senha" id="senha" placeholder="senha" autocomplete="current-password">
+            <app-error-message [control]="formulario.get('senha')" label="senha"></app-error-message>
+        </div>
+        <button class="bt-submit" type="submit" (click)="onSubmit()">Entrar</button>
+    </form>
+    <div class="item two" id="criar-conta">
+        <div class="logo">
+            <h1>SC</h1>
+            <p>SoftCad System</p>
+        </div>
+        <div class="info">
+            <h1 class="welcome">Seja Bem-Vindo(a)!</h1>
+            <p class="small">Insira seus dados pessoais e comece uma jornada na SoftCad conosco.</p>
+            <button class="bt-criar" id="criar-button" routerLink="/criar-conta">Inscreva-se</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+header {
+    display: flex;
+    background-color: #EDEDED; 
+    /* background-color: #e0e0e0; */
+    float: inline-end;
+    margin: 10px;
+    border-radius: 5px;
+    width: 80vw;
+    height: 8vh;
+}
+
+input[type=search] {
+    width: 400px;
+    height: 6.5vh;
+    margin: auto;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #e7e7e7;
+    background-image: url("../../../../assets/icones/icone-de-pesquisa.png");
+    background-position: left;
+    background-position-x: 5px;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    text-indent: 30px;
+}
+
+input[type=search]:focus {
+    width: 72%;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgb(231, 231, 231);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.074);
+}
+
+button{
+    border: none;
+}
+
+#user-header {
+    display: flex;
+    position: relative;
+    visibility: visible;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+#user-header> div > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+#user-header> div > p {
+    position: relative;
+    color: #4B4949;
+    white-space: nowrap;
+    margin: auto;
+    padding: 5px;
+    top: 8px;
+}
+
+#user-header> div > button {
+    padding: 4px;
+    margin: 10px;
+    border: none;
+    width: 4vw;
+    background-color: #EDEDED;
+    border-left: 1px solid rgba(0, 0, 0, 0.274);
+    font-size: 10.5pt;
+}
+
+#user-header> div > button > a{
+    text-decoration: none;
+    color: #4B4949;
+} 
+
+
+@media screen and (min-width: 768px) {
+    header {
+        display: flex;
+        background-color: #EDEDED; 
+        float: inline-end;
+        margin: 10px;
+        border-radius: 5px;
+        width: 80vw;
+        height: 8vh;
+    }
+    
+    input[type=search] {
+        width: 400px;
+        height: 6.5vh;
+        margin: auto;
+        margin-left: 10px;
+        border-radius: 5px;
+        border: 1px solid #e7e7e7;
+        background-image: url("../../../../assets/icones/icone-de-pesquisa.png");
+        background-position: left;
+        background-position-x: 5px;
+        background-repeat: no-repeat;
+        background-size: 22px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        text-indent: 30px;
+    }
+    
+    input[type=search]:focus {
+        width: 72%;
+        border-radius: 10px;
+        outline: none;
+        border: 1px solid rgb(231, 231, 231);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.074);
+    }
+    
+    button{
+        border: none;
+    }
+    
+    #user-header {
+        display: flex;
+        position: relative;
+        visibility: visible;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    
+    #user-header> div > img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 10px;
+    }
+    
+    #user-header> div > p {
+        position: relative;
+        color: #4B4949;
+        white-space: nowrap;
+        margin: auto;
+        padding: 5px;
+        top: 8px;
+    }
+    
+    #user-header> div > button {
+        padding: 4px;
+        margin: 10px;
+        border: none;
+        width: 4vw;
+        background-color: #EDEDED;
+        border-left: 1px solid rgba(0, 0, 0, 0.274);
+        font-size: 10.5pt;
+    }
+    
+    #user-header> div > button > a{
+        text-decoration: none;
+        color: #4B4949;
+    } 
+
+    form{
+        width: 500px;
+        height: 480px;
+    }
+    #criar-conta{
+        display: flex;
+    }
+
+}  
+
+@media print{
+    header{
+        display: none;
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+

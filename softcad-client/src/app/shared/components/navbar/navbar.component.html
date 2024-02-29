@@ -1,0 +1,9 @@
+<header>
+    <input type="search" name="pesquisa" id="ipes" placeholder="Pesquisar.." (keyup)="buscar($event)">
+    <div id="user-header">
+        <div><img [src]="admin?.foto" accept="image/*" alt="" class="profile-photo"></div>
+        <div><p (click)="toggleSidebar()">{{ admin?.nome }}</p></div>
+        <div><button type="button" routerLink="/login"><a>SAIR</a></button></div>
+    </div>
+</header> 
+<app-sidebar-profile *ngIf="sidebarVisible" (closeSidebar)="sidebarVisible = false"></app-sidebar-profile>

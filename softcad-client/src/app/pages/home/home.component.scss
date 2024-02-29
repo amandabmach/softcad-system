@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+section{
+    display: flex;
+    width: 100vw;
+    visibility: visible;
+    position: relative;
+}
+
+section > div {
+    position: relative;
+    width: 26vw;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    
+}
+section > div:hover {
+    box-shadow: 0px 0px 5px rgba(117, 73, 73, 0.329);
+}
+
+@media screen and (min-width: 768px) {
+
+    section{
+        display: flex;
+        width: 80vw;
+        visibility: visible;
+        position: relative;
+    }
+    
+    section > div {
+        position: relative;
+        width: 26vw;
+        height: 200px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        
+    }
+    section > div:hover {
+        box-shadow: 0px 0px 5px rgba(117, 73, 73, 0.329);
+    }
+    
+    section > div > h1{ 
+        display: block;
+        position: relative;
+        text-align: center;
+        font-family: var(--fonteRoboto);
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.548);
+        font-weight: 300;
+        font-size: 54pt;
+        top:50px;
+    }
+    section > div > p{
+        display: block;
+        position: relative;
+        text-align: right;
+        font-family: var(--fonteInter);
+        right: 5px;
+        top: 70px;
+        color: rgba(0, 0, 0, 0.548);
+    }
+    
+    .esp{
+        margin-right: 20px;
+    }
+
+}

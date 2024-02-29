@@ -1,0 +1,8 @@
+<div class="error" *ngIf="errorMessage != null; else nocontent">
+  {{ errorMessage }} 
+</div>
+
+<ng-template #nocontent>
+  <div class="error" style="visibility: hidden;"><div>.</div></div>
+</ng-template>
+

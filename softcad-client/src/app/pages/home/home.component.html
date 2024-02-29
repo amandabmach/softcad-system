@@ -1,0 +1,7 @@
+<section>
+    <div *ngFor="let board of boards; let i = index" [class.esp]="i < 2" title={{board.text}}>
+        <h1 [ngStyle]="{'color': board.color}">{{ board.amount }}</h1>
+        <p>{{ board.text }}</p>
+    </div>
+</section>
+<app-table></app-table>

@@ -1,0 +1,12 @@
+<header>
+    <app-header></app-header>
+</header>
+
+<nav>
+    <app-sidebar></app-sidebar>
+</nav>
+
+<main [ngClass]="{'colorPage': isPage}">
+  <router-outlet></router-outlet>
+</main>
+
