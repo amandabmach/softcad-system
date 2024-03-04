@@ -1,28 +1,28 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using softcad_web_api.Infrastructure.Configuration;
 using WebApiOperacaoCuriosidade.Application.Services;
 using WebApiOperacaoCuriosidade.Domain.DTOs;
-using WebApiOperacaoCuriosidade.Infrastructure;
 
 
 namespace WebApiOperacaoCuriosidade.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("usuarios")]
-    public class UsuarioController : ControllerBase
+    [Route("users")]
+    public class UserController : ControllerBase
     {
-        private readonly IUsuarioService _usuarioService;
+        private readonly IUserService _service;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public UserController(IUserService service)
         {
-            _usuarioService = usuarioService;
+            _service = service;
         }
 
         [HttpPost]
-        public IActionResult Insert([FromBody]UsuarioDTO usuarioDTO)
+        public IActionResult Insert([FromBody]UserDTO usuarioDTO)
         {
-            _usuarioService.Insert(usuarioDTO, User.GetId());
+            _service.Insert(usuarioDTO, User.GetId());
 
             return Ok();
         }
@@ -30,15 +30,15 @@ namespace WebApiOperacaoCuriosidade.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var list = _usuarioService.GetAll(User.GetId());
+            var list = _service.GetAll(User.GetId());
 
             return Ok(list);
         }
 
-        [HttpGet("administrador")]
+        [HttpGet("administrator")]
         public IActionResult GetUsersByAdmin()
         {
-            var list = _usuarioService.GetUsersByAdmin(User.GetId());
+            var list = _service.GetUsersByAdmin(User.GetId());
 
             return Ok(list);
         }
@@ -46,7 +46,7 @@ namespace WebApiOperacaoCuriosidade.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var usuario = _usuarioService.GetById(id, User.GetId());
+            var usuario = _service.GetById(id, User.GetId());
 
             return Ok(usuario);
         }
@@ -54,16 +54,16 @@ namespace WebApiOperacaoCuriosidade.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _usuarioService.Delete(id, User.GetId());
+            _service.Delete(id, User.GetId());
 
             return NoContent();
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody]UsuarioDTO usuarioDTO)
+        public IActionResult Update([FromBody]UserDTO usuarioDTO)
         {
 
-            _usuarioService.Update(usuarioDTO, User.GetId());
+            _service.Update(usuarioDTO, User.GetId());
 
             return NoContent();
            

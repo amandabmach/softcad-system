@@ -27,7 +27,7 @@ namespace WebApiOperacaoCuriosidade.Controllers
             var message = "Ocorreu um erro inesperado.";
             var path = HttpContext.Request.Path;
 
-            if (exception is RegraNegocioException e)
+            if (exception is BusinessRuleException e)
             {
                 statusCode = StatusCodes.Status400BadRequest;
                 message = exception.Message;

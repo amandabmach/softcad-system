@@ -8,14 +8,13 @@ namespace WebApiOperacaoCuriosidade.Application.Mapping
     {
         public DomainToDTOMapping()
         {
-            CreateMap<Administrador, AdminDTO>()
-                .ForMember(dest => dest.Foto, opt => opt.Ignore());
+            CreateMap<User, UserDTO>().ReverseMap();
 
-            CreateMap<AdminDTO, Administrador>()
-                .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => ConvertIFormFileToString(src.Foto)));
+            CreateMap<Administrator, AdminDTO>()
+                .ForMember(dest => dest.Photo, opt => opt.Ignore());
 
-            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
-            CreateMap<UsuarioDTO, Usuario>();
+            CreateMap<AdminDTO, Administrator>()
+                .ForMember(dest => dest.Photo, opt => opt.MapFrom(src => ConvertIFormFileToString(src.Photo)));
 
         }
         private string ConvertIFormFileToString(IFormFile file)

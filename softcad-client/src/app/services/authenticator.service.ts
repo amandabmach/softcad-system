@@ -7,17 +7,17 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class AuthenticatorService {
 
-  private token!: string | null;
+  private token!: string;
   private userid!: number | null;
 
   setToken(data: any){
-    let { token } = data;
-    this.token = token;
+    //let { token } = data;
+    this.token = data;
 
-    let { id } = JSON.parse(JSON.stringify(jwt_decode.jwtDecode(token)));
+    let { id } = JSON.parse(JSON.stringify(jwt_decode.jwtDecode(this.token)));
     this.userid = id;
 
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', this.token);
   }
 
   getToken(){

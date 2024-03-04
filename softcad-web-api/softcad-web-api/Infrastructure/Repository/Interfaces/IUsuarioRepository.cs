@@ -4,10 +4,10 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Interfaces
 {
     public interface IUsuarioRepository
     {
-        Usuario GetById(int id);
-        List<Usuario> GetAll();
-        bool Create(Usuario usuario);
-        bool Update(Usuario usuario);
+        User GetById(int id);
+        List<User> GetAll();
+        bool Create(User user);
+        bool Update(User user);
         bool Delete(int? id);
     }
 }

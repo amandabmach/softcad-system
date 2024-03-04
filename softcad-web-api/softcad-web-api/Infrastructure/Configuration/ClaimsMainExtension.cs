@@ -1,8 +1,8 @@
 ﻿using System.Security.Claims;
 
-namespace WebApiOperacaoCuriosidade.Infrastructure
+namespace softcad_web_api.Infrastructure.Configuration
 {
-    public static class ClaimsPrincipalExtension
+    public static class ClaimsMainExtension
     {
         public static int GetId(this ClaimsPrincipal user)
         {

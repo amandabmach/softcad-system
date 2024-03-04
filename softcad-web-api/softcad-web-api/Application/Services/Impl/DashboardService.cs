@@ -18,18 +18,21 @@ namespace WebApiOperacaoCuriosidade.Application.Services.Impl
             int mesAtual = date.Month;
 
             int amount = _repository.AmountUsersByMonth(mesAtual - 1, adminId);
+
             return amount;
         }
 
         public int AmountUsersByStatus(int adminId)
         {
             var amount = _repository.AmountUsersByStatus(adminId);
+
             return amount;
         }
 
         public int AmountUsersByAdmin(int adminId)
         {
             var amount = _repository.AmountUsersByAdmin(adminId);
+
             return amount;
         }
     }

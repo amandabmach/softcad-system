@@ -19,9 +19,9 @@
         </div>
         <p class="small">ou use sua conta de email:</p>
         <div>
-            <input type="text" formControlName="nome" name="nome" id="nome" placeholder="Nome"
+            <input type="text" formControlName="name" name="name" id="name" placeholder="Nome"
                 autocomplete="email">
-            <app-error-message [control]="formulario.get('nome')" label="nome"></app-error-message>
+            <app-error-message [control]="formulario.get('name')" label="name"></app-error-message>
         </div>
         <div>
             <input type="text" formControlName="email" name="email" id="email" placeholder="usuario@gmail.com"
@@ -29,8 +29,8 @@
             <app-error-message [control]="formulario.get('email')" label="email"></app-error-message>
         </div>
         <div>
-            <input type="password" formControlName="senha" name="senha" id="senha" placeholder="senha">
-            <app-error-message [control]="formulario.get('senha')" label="senha"></app-error-message>
+            <input type="password" formControlName="password" name="password" id="password" placeholder="Senha">
+            <app-error-message [control]="formulario.get('password')" label="password"></app-error-message>
         </div>
         <button class="bt-submit" type="submit" (click)="onSubmit()">CRIAR CONTA</button>
     </form>

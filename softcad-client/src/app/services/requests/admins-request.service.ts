@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, map, retry, throwError} from 'rxjs';
+import { Observable, catchError, map, retry, tap, throwError} from 'rxjs';
 import { AuthenticatorService } from '../authenticator.service';
-import { Administrador } from '../../models/administrador';
+import { Administrator } from '../../models/administrator';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminsRequestService {
 
-  private readonly API = `https://localhost:7032/administradores`;
+  private readonly API = `https://localhost:7032/administrators`;
 
   constructor(
     private http: HttpClient,
@@ -19,15 +19,14 @@ export class AdminsRequestService {
   login(body: any) : Observable<any> {
     return this.http.post(`${this.API}/login`, body)
     .pipe(
-      retry(3),
       map(data => this.auth.setToken(data)),
       catchError(this.handleError)
     );
   }
 
-  getAdministrador(): Observable<Administrador> {
+  getAdministrador(): Observable<Administrator> {
     var id = this.auth.getIdAdmin();
-    return this.http.get<Administrador>(`${this.API}/${id}`).pipe(catchError(this.handleError));
+    return this.http.get<Administrator>(`${this.API}/${id}`).pipe(catchError(this.handleError));
   }
 
   getPhotoProfile(): Observable<Blob> {
@@ -36,14 +35,14 @@ export class AdminsRequestService {
   }
 
   createAdministrador(body: any): Observable<any>{
-    return this.http.post<Administrador>(this.API, body)
+    return this.http.post<Administrator>(this.API, body)
     .pipe(
       map(data => this.auth.setToken(data)),
       catchError(this.handleError)  
     );
   }
 
-  updateAdministrador(body: any): Observable<Administrador> {
+  updateAdministrador(body: any): Observable<Administrator> {
     var id = this.auth.getIdAdmin();
     body = { ...body, id: id };
 
@@ -54,12 +53,12 @@ export class AdminsRequestService {
         formData.append(key, body[key]);
       }
     }
-    return this.http.put<Administrador>(`${this.API}/${id}`, formData).pipe(catchError(this.handleError));
+    return this.http.put<Administrator>(`${this.API}/${id}`, formData).pipe(catchError(this.handleError));
   }
   
-  deleteAdministrador(): Observable<Administrador>{
+  deleteAdministrador(): Observable<Administrator>{
     var id = this.auth.getIdAdmin();
-    return this.http.delete<Administrador>(`${this.API}/${id}`).pipe(catchError(this.handleError));
+    return this.http.delete<Administrator>(`${this.API}/${id}`).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

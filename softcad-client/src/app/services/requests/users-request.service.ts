@@ -1,53 +1,53 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, catchError, retry, tap, throwError } from 'rxjs';
-import { Usuario } from '../../models/usuario';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersRequestService {
 
-  private readonly API = `https://localhost:7032/usuarios`;
+  private readonly API = `https://localhost:7032/Users`;
   changed = new Subject<void>();
 
 
   constructor(private http: HttpClient) { }
 
-  getUser(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.API}/${id}`)
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.API}/${id}`)
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
   }
 
-  getUsersByAdmin(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.API}/administrador`)
+  getUsersByAdmin(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.API}/administrador`)
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
   }
 
-  createUser(body: any): Observable<Usuario> {
-    return this.http.post<Usuario>(this.API, body)
+  createUser(body: any): Observable<User> {
+    return this.http.post<User>(this.API, body)
       .pipe(
         tap(() => this.changed.next()),
         catchError(this.handleError)
       );
   }
 
-  deleteUser(idUser: any): Observable<Usuario> {
-    return this.http.delete<Usuario>(`${this.API}/${idUser}`)
+  deleteUser(idUser: any): Observable<User> {
+    return this.http.delete<User>(`${this.API}/${idUser}`)
       .pipe(
         tap(() => this.changed.next()),
         catchError(this.handleError)
       );
   }
 
-  updateUser(body: any): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.API}`, body)
+  updateUser(body: any): Observable<User> {
+    return this.http.put<User>(`${this.API}`, body)
       .pipe(
         tap(() => this.changed.next()),
         catchError(this.handleError)

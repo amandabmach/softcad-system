@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using WebApiOperacaoCuriosidade.Application.Services.Exceptions;
 using WebApiOperacaoCuriosidade.Application.Services.Interfaces;
+using WebApiOperacaoCuriosidade.Application.Services.Utils;
 using WebApiOperacaoCuriosidade.Domain.DTOs;
+using WebApiOperacaoCuriosidade.Domain.Enum;
 using WebApiOperacaoCuriosidade.Domain.Models;
 using WebApiOperacaoCuriosidade.Infrastructure.Repository.Interfaces;
 
@@ -12,137 +15,177 @@ namespace WebApiOperacaoCuriosidade.Application.Services.Impl
 {
     public class AdminService : IAdminService
     {
-        private readonly IAdministradorRepository _adminRepository;
+        private readonly IAdministradorRepository _repository;
+        private readonly ILogService _logService;
         private readonly IMapper _mapper;
-
-        public AdminService(IAdministradorRepository adminRepository, IMapper mapper)
+        private readonly LogConvert _convert;
+        public AdminService(IAdministradorRepository repository, IMapper mapper, ILogService logService, LogConvert convert)
         {
-            _adminRepository = adminRepository;
+            _repository = repository;
             _mapper = mapper;
+            _logService = logService;
+            _convert = convert;
         }
-        public Administrador Insert(AdminDTO adminDTO)
+        public Administrator Insert(AdminDTO adminDTO)
         {
-            var adminExists = _adminRepository.GetAll().Where(a => a.Email.Trim().ToUpper() == adminDTO.Email.Trim().ToUpper()).FirstOrDefault();
+            var adminExists = _repository.GetAll().Where(a => a.Email.Trim().ToUpper() == adminDTO.Email.Trim().ToUpper()).FirstOrDefault();
+            
             if (adminExists != null)
-                throw new RegraNegocioException("Administrador já registrado!");
+            {
+                throw new BusinessRuleException("Administrador já registrado!");
+            }
 
-            var administrador = _mapper.Map<Administrador>(adminDTO);
+            var admin = _mapper.Map<Administrator>(adminDTO);
 
-            if (adminDTO.Senha != null)
+            if (adminDTO.Password != null)
             {
                 using var hmac = new HMACSHA512();
-                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminDTO.Senha));
+                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminDTO.Password));
                 byte[] passwordSalt = hmac.Key;
 
-                administrador.AlterarSenha(passwordHash, passwordSalt);
+                admin.ChangePassword(passwordHash, passwordSalt);
             }
-            administrador.DataCadastro = DateTime.Now;
 
-            var adminCadastrado = _adminRepository.Create(administrador);
-            if (adminCadastrado == null)
-                throw new RegraNegocioException("Erro na criação do Administrador!");
+            admin.RegistrationDate = DateTime.Now;
+            var newAdmin = _repository.Create(admin);
 
-            return adminCadastrado;
+            if (newAdmin == null)
+            {
+                throw new BusinessRuleException("Erro na criação do Administrador!");
+            }
+            _logService.RegisterLog(new Logs(newAdmin.Id,Operation.CREATION));
+
+            return newAdmin;
         }
 
-        public List<Administrador> GetAll()
+        public List<Administrator> GetAll()
         {
-            var listAdmins = _adminRepository.GetAll().ToList();
-            return listAdmins;
+            var list = _repository.GetAll().ToList();
+
+            return list;
         }
 
-        public Administrador GetById(int id)
+        public Administrator GetById(int id)
         {
-            var administrador = _adminRepository.GetById(id);
-            if (administrador == null)
-                throw new RegraNegocioException("Administrador não encontrado");
+            var admin = _repository.GetById(id);
 
-            return administrador;
+            if (admin == null)
+            {
+                throw new BusinessRuleException("Administrador não encontrado");
+            }
+            _logService.RegisterLog(new Logs(admin.Id, Operation.CONSULT, admin.Id));
+            return admin;
         }
 
         public bool Delete(int id)
         {
-            var administrador = _adminRepository.GetById(id);
-            if (administrador == null)
-                throw new RegraNegocioException("Administrador não encontrado");
+            var admin = _repository.GetById(id);
 
-            if (!_adminRepository.Delete(id))
+            if (admin == null)
+            {
+                throw new BusinessRuleException("Administrador não encontrado");
+            }
+
+            if (!_repository.Delete(id))
+            {
                 return false;
+            }
 
+            _logService.RegisterLog(new Logs(admin.Id, Operation.ELIMINATION, admin.Id));
             return true;
         }
 
-        public bool Update(int id, AdminDTO dto)
+        public bool Update(int id, AdminDTO adminDTO)
         {
-            var administrador = _adminRepository.GetById(id);
-            if (administrador == null)
-                throw new RegraNegocioException("Administrador não encontrado.");
+            var adminExists = _repository.GetById(id);
 
-            var admin = _mapper.Map<Administrador>(dto);
-
-            admin.UltimaModificacao = DateTime.Now;
-
-            if (dto.Senha != null)
+            if (adminExists == null)
             {
-                using var hmac = new HMACSHA512();
-                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dto.Senha));
-                byte[] passwordSalt = hmac.Key;
-
-                admin.AlterarSenha(passwordHash, passwordSalt);
+                throw new BusinessRuleException("Administrador não encontrado.");
             }
 
-            if (!_adminRepository.Update(admin))
+            string beforeData = _convert.MessageLogUpdateAdmin(adminDTO);
+
+            var admin = _mapper.Map<Administrator>(adminDTO);
+            admin.LastModification = DateTime.Now;
+
+            if (adminDTO.Password != null)
+            {
+                using var hmac = new HMACSHA512();
+                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminDTO.Password));
+                byte[] passwordSalt = hmac.Key;
+
+                admin.ChangePassword(passwordHash, passwordSalt);
+            }
+
+            if (!_repository.Update(admin))
+            {
                 return false;
+            }
+            string lastData = _convert.MessageLogUpdateAdmin(_mapper.Map<AdminDTO>(admin));
 
+            _logService.RegisterLog(new Logs(admin.Id, Operation.CHANGE, admin.Id, beforeData, lastData));
             return true;
-
         }
 
         public bool UpdatePartial(int id, JsonPatchDocument<AdminDTO> admin)
         {
-            var adminExists = _adminRepository.GetById(id);
+            var adminExists = _repository.GetById(id);
             if (adminExists == null)
-                throw new RegraNegocioException("Administrador não encontrado.");
+            {
+                throw new BusinessRuleException("Administrador não encontrado.");
+            }
+
+            string beforeData = _convert.MessageLogUpdateAdmin(_mapper.Map<AdminDTO>(admin));
 
             var adminToPatch = _mapper.Map<AdminDTO>(adminExists);
             admin.ApplyTo(adminToPatch);
 
             _mapper.Map(adminToPatch, adminExists);
-            adminExists.UltimaModificacao = DateTime.Now;
+            adminExists.LastModification = DateTime.Now;
 
-            if (!_adminRepository.Update(adminExists))
+            if (!_repository.Update(adminExists))
+            {
                 return false;
+            }
+            string lastData = _convert.MessageLogUpdateAdmin(_mapper.Map<AdminDTO>(adminExists));
 
+            _logService.RegisterLog(new Logs(adminExists.Id, Operation.CHANGE, adminExists.Id, beforeData, lastData));
             return true;
         }
 
-        public Administrador Authenticator(Login login)
+        public Administrator Authenticator(Credentials credentials)
         {
-            var administrador = _adminRepository.GetAll().FirstOrDefault(a => a.Email == login.Email);
+            var administrador = _repository.GetAll().FirstOrDefault(a => a.Email == credentials.Email);
 
             if (administrador == null)
-                throw new RegraNegocioException("Administrador não encontrado.");
+            {
+                throw new BusinessRuleException("Administrador não encontrado.");
+            }
 
             using (var hmac = new HMACSHA512(administrador.PasswordSalt))
             {
-                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(login.Senha));
+                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(credentials.Password));
 
                 if (!passwordHash.SequenceEqual(administrador.PasswordHash))
-                    throw new RegraNegocioException("Senha incorreta!");
+                {
+                    throw new BusinessRuleException("Senha incorreta!");
+                }
             }
             return administrador;
         }
 
         public byte[]? DownloadPhoto(int id)
         {
-            var admin = _adminRepository.GetById(id);
-            var fotoPath = admin.Foto;
+            var admin = _repository.GetById(id);
+            var photoPath = admin.Photo;
 
-            if (File.Exists(fotoPath))
+            if (File.Exists(photoPath))
             {
-                var imageBytes = File.ReadAllBytes(fotoPath);
+                var imageBytes = File.ReadAllBytes(photoPath);
                 return imageBytes;
             }
+
             return null;
         }
 

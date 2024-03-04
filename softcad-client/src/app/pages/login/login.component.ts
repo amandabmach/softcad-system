@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit{
     localStorage.clear();
     this.formulario = this.formBuilder.group({
       email:[null, [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(255)]],
-      senha: [null, [Validators.required, Validators.pattern(/(?=^.{8,20}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]]
+      password: [null, [Validators.required, Validators.pattern(/(?=^.{8,20}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]]
     });
   }
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit{
     if(this.formulario.valid){
       this.service.login(this.formulario.value).subscribe({
         next: () => this.route.navigate(['/home']),
-        error: () => this.alert.showAlertError("Erro ao realizar login, tente novamente!")
+        error: () => this.alert.showAlertError("Erro ao realizar login, tente novamente!"),
       })
     }
   }

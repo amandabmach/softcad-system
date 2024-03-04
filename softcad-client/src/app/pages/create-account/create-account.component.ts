@@ -23,9 +23,9 @@ export class CreateAccountComponent implements OnInit{
   ngOnInit(){
     localStorage.clear();
     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       email: [null, [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(255)]],
-      senha: [null, [Validators.required, Validators.pattern(/(?=^.{8,20}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]]
+      password: [null, [Validators.required, Validators.pattern(/(?=^.{8,20}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]]
     });
   }
 

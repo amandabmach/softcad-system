@@ -45,10 +45,10 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
         }
         public List<Logs> GetLogs(int id)
         {
-
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
                 const string sql = "SELECT * FROM Logs WHERE ExecutorId = @Id";
+
                 var list = sqlConnection.Query<Logs>(sql, new { id }).OrderByDescending(x => x.Timestamp).ToList();
 
                 return list;

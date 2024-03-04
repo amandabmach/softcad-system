@@ -2,7 +2,7 @@
 {
     public enum Result
     {
-        Falhou,
-        Sucesso
+        FAILED,
+        SUCCESS
     }
 }

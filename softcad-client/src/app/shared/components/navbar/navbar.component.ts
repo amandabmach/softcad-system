@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit{
   getAdministrador(){
     this.service.getAdministrador().subscribe(dados => {
       var admin = dados;
-      if(admin.foto != null){
+      if(admin.photo != null){
         this.service.getPhotoProfile().subscribe(foto =>{
           const url = URL.createObjectURL(foto);
           this.adminservice.setAdminPhoto(admin, url);

@@ -3,7 +3,7 @@
     public interface IDashboardRepository
     {
         public int AmountUsersByStatus(int adminId);
-        public int AmountUsersByMonth(int mes, int adminId);
+        public int AmountUsersByMonth(int month, int adminId);
         public int AmountUsersByAdmin(int adminId);
 
     }

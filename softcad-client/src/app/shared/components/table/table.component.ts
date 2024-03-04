@@ -1,4 +1,4 @@
-import { Usuario } from '../../../models/usuario';
+import { User } from '../../../models/user';
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UsersRequestService } from '../../../services/requests/users-request.service';
@@ -15,7 +15,7 @@ export class TableComponent implements OnInit, OnDestroy{
   usersChanged!: Subscription;
   visibility!: boolean;
   userSelected: any;
-  users: Usuario[] = [];
+  users: User[] = [];
   filteredData: any[] = [];
   isPage: boolean = false;
   
@@ -52,7 +52,7 @@ export class TableComponent implements OnInit, OnDestroy{
 
   filterUsers() {
     const searchString = this.search.conteudo.toUpperCase();
-    return this.users.filter(user => user.nome.toUpperCase().includes(searchString));
+    return this.users.filter(user => user.name.toUpperCase().includes(searchString));
   }
   
   getUsers() {

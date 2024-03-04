@@ -20,17 +20,17 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Identity
             _configuration = configuration;
         }
 
-        public bool Authenticate(string email, string senha)
+        public bool Authenticate(string email, string password)
         {
 
-            var administrador =  _adminRepository.GetAll().Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
+            var administrador = _adminRepository.GetAll().Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
             if (administrador == null)
             {
                 return false;
             }
 
             using var hmac = new HMACSHA512(administrador.PasswordSalt);
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(senha));
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             for (int x = 0; x < computedHash.Length; x++)
             {
                 if (computedHash[x] != administrador.PasswordHash[x]) return false;
@@ -66,7 +66,7 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Identity
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public Administrador GetAdminByEmail(string email)
+        public Administrator GetAdminByEmail(string email)
         {
             return _adminRepository.GetAll().Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
         }

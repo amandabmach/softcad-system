@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using softcad_web_api.Infrastructure.Configuration;
 using WebApiOperacaoCuriosidade.Application.Services;
-using WebApiOperacaoCuriosidade.Application.Services.Impl;
-using WebApiOperacaoCuriosidade.Application.Services.Interfaces;
-using WebApiOperacaoCuriosidade.Infrastructure;
 
 namespace WebApiOperacaoCuriosidade.Controllers
 {

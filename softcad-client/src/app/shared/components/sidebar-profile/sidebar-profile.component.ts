@@ -40,7 +40,7 @@ export class SidebarProfileComponent implements OnInit{
 
     this.service.getAdministrador().subscribe(dados => {
       this.formulario.patchValue({
-        nome: dados.nome,
+        nome: dados.name,
         email: dados.email
       })
     });

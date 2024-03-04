@@ -25,13 +25,13 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
             }
         }
 
-        public int AmountUsersByMonth(int mes, int adminId)
+        public int AmountUsersByMonth(int month, int adminId)
         {
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
                 const string sql = "SELECT COUNT(*) FROM Usuarios WHERE MONTH(DataCadastro) = @mes AND AdministradorId = @adminId";
 
-                var amount = sqlConnection.Query<int>(sql, new { mes, adminId }).Single();
+                var amount = sqlConnection.Query<int>(sql, new { month, adminId }).Single();
 
                 return amount;
 

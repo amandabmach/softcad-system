@@ -12,8 +12,8 @@
             <app-error-message [control]="formulario.get('email')" label="email"></app-error-message>
         </div>
         <div>
-            <input type="password" formControlName="senha" name="senha" id="senha" placeholder="senha" autocomplete="current-password">
-            <app-error-message [control]="formulario.get('senha')" label="senha"></app-error-message>
+            <input type="password" formControlName="password" name="password" id="password" placeholder="Senha" autocomplete="current-password">
+            <app-error-message [control]="formulario.get('password')" label="password"></app-error-message>
         </div>
         <button class="bt-submit" type="submit" (click)="onSubmit()">Entrar</button>
     </form>

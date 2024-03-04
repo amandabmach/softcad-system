@@ -18,8 +18,8 @@ namespace WebApiOperacaoCuriosidade.Application.Services.Impl
         public void RegisterLog(Logs logs)
         {
             _logRepository.RegisterLog(logs);
-
         }
+
         public List<LogUtil> GetLogs(int admin)
         {
 

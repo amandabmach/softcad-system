@@ -6,7 +6,7 @@ namespace WebApiOperacaoCuriosidade.Domain.Models
     {
         public int? Id { get; set; }
         public int? ExecutorId { get; set; }
-        public Operacao? Operation { get; set; }
+        public Operation? Operation { get; set; }
         public DateTime? Timestamp { get; set; }
         public int? AffectedUser { get; set; }
         public Result? Result { get; set; }
@@ -15,24 +15,23 @@ namespace WebApiOperacaoCuriosidade.Domain.Models
         public string? CurrentState { get; set; }
 
         public Logs() { }
-
-
-        public Logs(int? executorId, Operacao? operation)
+    
+        public Logs(int? executorId, Operation? operation)
         {
             ExecutorId = executorId;
             Operation = operation;
             Timestamp = DateTime.Now;
-            Result = Enum.Result.Sucesso;
+            Result = Enum.Result.SUCCESS;
         }
-        public Logs(int? executorId, Operacao? operation, int? affectedUser)
+        public Logs(int? executorId, Operation? operation, int? affectedUser)
         {
             ExecutorId = executorId;
             Operation = operation;
             Timestamp = DateTime.Now;
             AffectedUser = affectedUser;
-            Result = Enum.Result.Sucesso;
+            Result = Enum.Result.SUCCESS;
         }
-        public Logs(int? executorId, Operacao? operation, int? affectedUser, string? previousState, string? currentState)
+        public Logs(int? executorId, Operation? operation, int? affectedUser, string? previousState, string? currentState)
         {
             ExecutorId = executorId;
             Operation = operation;
@@ -40,11 +39,11 @@ namespace WebApiOperacaoCuriosidade.Domain.Models
             AffectedUser = affectedUser;
             PreviousState = previousState;
             CurrentState = currentState;
-            Result = Enum.Result.Sucesso;
+            Result = Enum.Result.SUCCESS;
         }
 
         //ErrorController
-        public Logs(int? executorId, Operacao? operation, DateTime? timestamp, string message, Result? result)
+        public Logs(int? executorId, Operation? operation, DateTime? timestamp, string message, Result? result)
         {
             ExecutorId = executorId;
             Operation = operation;

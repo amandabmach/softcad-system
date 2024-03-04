@@ -1,4 +1,5 @@
-﻿using WebApiOperacaoCuriosidade.Domain.Enum;
+﻿using WebApiOperacaoCuriosidade.Domain.DTOs;
+using WebApiOperacaoCuriosidade.Domain.Enum;
 using WebApiOperacaoCuriosidade.Domain.Models;
 using WebApiOperacaoCuriosidade.Infrastructure.Repository.Interfaces;
 
@@ -9,12 +10,10 @@ namespace WebApiOperacaoCuriosidade.Application.Services.Utils
         private readonly IAdministradorRepository _adminRepository;
         private readonly IUsuarioRepository _userRepository;
 
-        public LogConvert() { }
-
-        public LogConvert(IAdministradorRepository administradorRepository, IUsuarioRepository usuarioRepository)
+        public LogConvert(IAdministradorRepository adminRepository, IUsuarioRepository userRepository)
         {
-            _adminRepository = administradorRepository;
-            _userRepository = usuarioRepository;
+            _adminRepository = adminRepository;
+            _userRepository = userRepository;
         }
 
         public List<LogUtil> ConvertLogs(List<Logs> logs)
@@ -24,15 +23,31 @@ namespace WebApiOperacaoCuriosidade.Application.Services.Utils
             foreach (Logs log in logs)
             {
                 LogUtil newLog = new LogUtil();
-                newLog.ExecutorEmail = log.ExecutorId.HasValue
-                    ? _adminRepository.GetById((int)log.ExecutorId)?.Email
-                    : "Não informado";
+
+                if (log.ExecutorId.HasValue)
+                {
+                    string? emailAdmin = _adminRepository.GetById((int)log.ExecutorId)?.Email;
+                    string? emailUser = _userRepository.GetById((int)log.ExecutorId)?.Email;
+
+                    if (emailAdmin != null)
+                    {
+                        newLog.ExecutorEmail = emailAdmin;
+
+                    } else if (emailUser != null)
+                    {
+                        newLog.ExecutorEmail = emailUser;
+                    } else
+                    {
+                        newLog.ExecutorEmail = "Não informado";
+                    }
+                }
+         
                 newLog.AffectedUser = log.AffectedUser.HasValue
-                    ? _userRepository.GetById((int)log.AffectedUser)?.Nome
+                    ? _userRepository.GetById((int)log.AffectedUser)?.Name
                     : "Não informado";
 
                 newLog.Operation = log.Operation.HasValue
-                    ? Enum.GetName(typeof(Operacao), log.Operation)
+                    ? Enum.GetName(typeof(Operation), log.Operation)
                     : "Não informado";
 
                 newLog.Result = log.Result == 0 ? "FALHOU" : "SUCESSO";
@@ -49,12 +64,28 @@ namespace WebApiOperacaoCuriosidade.Application.Services.Utils
             return newList;
         }
 
-        public string MessageLogUpdate(Usuario user)
+        public string MessageLogUpdateUser(User user)
         {
-            return "Id: " + user.Id +"\n"+ "Nome: " + user.Nome + "\n" + "Email: " + user.Email + "\n" + "Idade: " + user.Idade + "\n" +
-                    "Endereço: " + user.Endereco + "\n" + "Status: " + user.Status + "\n" + "Sentimentos: " + user.Sentimentos + "\n" +
-                    "Valores: " + user.Valores + "\n" + "Interesses: " + user.Interesses + "\n" + "Data de Cadastro: " + user.DataCadastro + "\n" +
-                    "Ultima Modificação: " + user.UltimaModificacao + "\n" + "AdministradorID: " + user.AdministradorId;
+            return "Id: " + user.Id + "\n" +
+                   "Name: " + user.Name + "\n" +
+                   "Email: " + user.Email + "\n" +
+                   "Age: " + user.Age + "\n" +
+                   "Address: " + user.Address + "\n" +
+                   "Status: " + user.Status + "\n" +
+                   "Feelings: " + user.Feelings + "\n" +
+                   "Values: " + user.Principles + "\n" +
+                   "Interests: " + user.Interests + "\n" +
+                   "Registration Date: " + user.RegistrationDate + "\n" +
+                   "Last Modification: " + user.LastModification + "\n" +
+                   "Administrator ID: " + user.AdministratorId;
+        }
+
+        public string MessageLogUpdateAdmin(AdminDTO admin)
+        {
+            return "Id: " + admin.Id + "\n" +
+                   "Name: " + admin.Name + "\n" +
+                   "Email: " + admin.Email + "\n" +
+                   "Photo: " + admin.Photo;
         }
     }
 }

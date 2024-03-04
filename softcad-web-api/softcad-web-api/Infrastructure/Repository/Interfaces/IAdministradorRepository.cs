@@ -4,10 +4,10 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Interfaces
 {
     public interface IAdministradorRepository
     {
-        Administrador GetById(int id);
-        List<Administrador> GetAll();
-        Administrador Create(Administrador administrador);
-        bool Update(Administrador administrador);
+        Administrator GetById(int id);
+        List<Administrator> GetAll();
+        Administrator Create(Administrator administrator);
+        bool Update(Administrator administrator);
         bool Delete(int id);
     }
 }

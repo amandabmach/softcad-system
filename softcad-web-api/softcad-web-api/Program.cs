@@ -17,10 +17,10 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddScoped<IAdministradorRepository, AdministradorRepository>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IAdministradorRepository, AdministratorRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UserRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
-builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILogRepository, LogRepository>();
 builder.Services.AddScoped<ILogService, LogService>();
 builder.Services.AddScoped<IAuthenticate, AuthenticateService>();

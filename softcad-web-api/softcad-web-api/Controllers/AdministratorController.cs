@@ -9,7 +9,7 @@ using WebApiOperacaoCuriosidade.Domain.Models;
 namespace WebApiOperacaoCuriosidade.Controllers
 {
     [ApiController]
-    [Route("administradores")]
+    [Route("administrators")]
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
@@ -34,22 +34,19 @@ namespace WebApiOperacaoCuriosidade.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var administrador = _adminService.GetById(id);
+            var admin = _adminService.GetById(id);
 
-            return Ok(administrador);
+            return Ok(admin);
         }
 
         [HttpPost]
-        public ActionResult<AdminToken> Create(AdminDTO adminDTO)
+        public ActionResult Create(AdminDTO adminDTO)
         {
             var adminCreate = _adminService.Insert(adminDTO);
 
             var token = _authenticate.GenerateToken(Convert.ToInt32(adminCreate.Id), adminCreate.Email);
 
-            return new AdminToken
-            {
-                Token = token,
-            };
+            return Ok(token);
             
         }
 
@@ -64,37 +61,30 @@ namespace WebApiOperacaoCuriosidade.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public IActionResult Update([FromRoute] int id, [FromForm]AdminDTO novoAdmin)
+        public IActionResult Update([FromRoute] int id, [FromForm]AdminDTO adminDTO)
         {
-
-            _adminService.Update(id, novoAdmin);
+            _adminService.Update(id, adminDTO);
 
             return NoContent();
-
         }
 
         [HttpPatch("{id}")]
         [Authorize]
         public IActionResult UpdatePartial([FromRoute] int id, [FromBody]JsonPatchDocument<AdminDTO> admin)
         {
-
             _adminService.UpdatePartial(id, admin);
 
             return NoContent();
         }
 
         [HttpPost("login")]
-        public ActionResult<AdminToken> Authenticator([FromBody]Login login)
+        public ActionResult Authenticator([FromBody]Credentials credentials)
         {
-
-            var admin = _adminService.Authenticator(login);
+            var admin = _adminService.Authenticator(credentials);
 
             var token = _authenticate.GenerateToken(Convert.ToInt32(admin.Id), admin.Email);
 
-            return new AdminToken
-            {
-                Token = token,
-            };
+            return Ok(token);
         }
 
 
