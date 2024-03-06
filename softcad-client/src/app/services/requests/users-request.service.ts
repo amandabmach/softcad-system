@@ -8,7 +8,7 @@ import { User } from '../../models/user';
 })
 export class UsersRequestService {
 
-  private readonly API = `https://localhost:7032/Users`;
+  private readonly API = `https://localhost:7032/users`;
   changed = new Subject<void>();
 
 
@@ -16,18 +16,12 @@ export class UsersRequestService {
 
   getUser(id: number): Observable<User> {
     return this.http.get<User>(`${this.API}/${id}`)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   getUsersByAdmin(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.API}/administrador`)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+    return this.http.get<User[]>(`${this.API}/administrator`)
+      .pipe(catchError(this.handleError));
   }
 
   createUser(body: any): Observable<User> {

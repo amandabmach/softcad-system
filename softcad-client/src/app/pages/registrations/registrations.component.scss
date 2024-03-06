@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
-#legenda{
+.legend{
     display: flex;
     justify-content: space-between;
     margin: 0.5em 0em 0em 1em;
 }
 
-#legenda > h3{
+.legend > h3{
     font-size: var(--fonteRoboto);
     position: relative;
     color: hsla(0, 0%, 0%, 0.500);
@@ -14,7 +14,7 @@
     font-size: 16pt;
 }
 
-#legenda > button{
+.legend > button{
     background-color: #61A057;
     width: 130px;
     height: 30px;
@@ -24,7 +24,8 @@
     margin-right: 10px;
     font-size: 10pt;
 }
-#legenda > button > a{
+
+.legend > button > a{
     text-decoration: none;
     color: white;
 }

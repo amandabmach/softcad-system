@@ -10,7 +10,7 @@ import { UsersRequestService } from '../../services/requests/users-request.servi
   styleUrl: './form.component.scss'
 })
 export class FormComponent implements OnInit {
-  formulario!: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,22 +19,22 @@ export class FormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+    this.form = this.formBuilder.group({
+      name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       email: [null, [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(255)]],
-      idade: [null, Validators.required],
-      endereco: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-      informacoes: [null, Validators.maxLength(255)],
-      interesses: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-      sentimentos: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-      valores: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      age: [null, Validators.required],
+      address: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      information: [null, Validators.maxLength(255)],
+      interests: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      feelings: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      principles: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       status: [true]
     });
   }
 
   onSubmit() {
-    if(this.formulario.valid) {
-      this.service.createUser(this.formulario.value).subscribe({
+    if(this.form.valid) {
+      this.service.createUser(this.form.value).subscribe({
         next: () => {
           this.alert.showAlertSuccess("Usuário cadastrado com sucesso!"),
           this.resetaDadosForm();
@@ -45,6 +45,6 @@ export class FormComponent implements OnInit {
   }
 
   resetaDadosForm() {
-    this.formulario.reset();
+    this.form.reset();
   }
 }

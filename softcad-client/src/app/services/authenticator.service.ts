@@ -11,14 +11,15 @@ export class AuthenticatorService {
   private userid!: number | null;
 
   setToken(data: any){
-    //let { token } = data;
-    this.token = data;
+    var { token } = data;
+    this.token = token;
 
-    let { id } = JSON.parse(JSON.stringify(jwt_decode.jwtDecode(this.token)));
+    var { id } = JSON.parse(JSON.stringify(jwt_decode.jwtDecode(token)));
     this.userid = id;
 
-    localStorage.setItem('token', this.token);
+    localStorage.setItem('token', token);
   }
+
 
   getToken(){
     let token = localStorage.getItem('token');

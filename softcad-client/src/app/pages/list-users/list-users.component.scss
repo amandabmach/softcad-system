@@ -11,20 +11,20 @@ main{
     background-color: #ffffff;
 }
 
-#legenda{
+.legend{
     display: flex;
     justify-content: space-between;
     margin: 0.5em 0em 0em 1em;
 }
 
-#legenda > h3{
+.legend > h3{
     position: relative;
     font-size: 16pt;
     color: hsla(0, 0%, 0%, 0.500);
     top: 5px;
 }
 
-#legenda > button{
+.legend > button{
     background-color: #5763A0;
     width: 100px;
     height: 25px;

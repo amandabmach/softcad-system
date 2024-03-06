@@ -22,16 +22,19 @@
 }
 
 .sidenav {
-    height: 100vh; 
-    width: 22vw; 
+    width: 0vw;
+    height: 100%; 
     position: fixed; 
-    z-index: 1; 
-    top: 0;
+    z-index: 2; 
     right: 0;
     background-color: #f3f3f3;
     overflow-x: hidden; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548); 
     transition: 0.5s; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
+}
+
+.sidenav.change {
+    width: 22vw;
 }
 
 .sidenav a {
@@ -45,7 +48,6 @@
 .sidenav a:hover {
     color: #c4bdbd;
     cursor: pointer;
-
 }
 
 .nome-config {
@@ -72,7 +74,6 @@
     height: 120px;
     border-radius: 50%;
     cursor: pointer;
-
 }
 
 .foto-config{
@@ -156,32 +157,32 @@
     font-size: 10pt;
 }
 
-.senha-config{
+.password-config{
     display: flex;
     flex-direction: column;
 }
 
-.senha-config > div{
+.password-config > div{
     margin-top: 10px;
 }
 
-.senha-config > div> p{
+.password-config > div> p{
     position: relative;
     margin: 0;
 }
 
-.senha-config > div > label{
+.password-config > div > label{
     font-size: 10pt;
     margin: 0;
 }
 
-.input-senha{
+.input-password{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.input-senha input{
+.input-password input{
     display: flex;
     width: 21vw;
     margin: auto;
@@ -216,7 +217,7 @@
     cursor: pointer;
 }
 
-.bt-alterar-senha{
+.bt-alterar-password{
     height: 26px;
     text-align: center;
 }

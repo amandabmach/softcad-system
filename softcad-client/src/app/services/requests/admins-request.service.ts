@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, map, retry, tap, throwError} from 'rxjs';
+import { Observable, catchError, map, throwError} from 'rxjs';
 import { AuthenticatorService } from '../authenticator.service';
 import { Administrator } from '../../models/administrator';
 
@@ -24,7 +24,7 @@ export class AdminsRequestService {
     );
   }
 
-  getAdministrador(): Observable<Administrator> {
+  getAdministrator(): Observable<Administrator> {
     var id = this.auth.getIdAdmin();
     return this.http.get<Administrator>(`${this.API}/${id}`).pipe(catchError(this.handleError));
   }
@@ -34,7 +34,7 @@ export class AdminsRequestService {
     return this.http.get(`${this.API}/download/${id}`, { responseType: 'blob' });
   }
 
-  createAdministrador(body: any): Observable<any>{
+  createAdministrator(body: any): Observable<any>{
     return this.http.post<Administrator>(this.API, body)
     .pipe(
       map(data => this.auth.setToken(data)),
@@ -42,7 +42,7 @@ export class AdminsRequestService {
     );
   }
 
-  updateAdministrador(body: any): Observable<Administrator> {
+  updateAdministrator(body: any): Observable<Administrator> {
     var id = this.auth.getIdAdmin();
     body = { ...body, id: id };
 
@@ -56,7 +56,7 @@ export class AdminsRequestService {
     return this.http.put<Administrator>(`${this.API}/${id}`, formData).pipe(catchError(this.handleError));
   }
   
-  deleteAdministrador(): Observable<Administrator>{
+  deleteAdministrator(): Observable<Administrator>{
     var id = this.auth.getIdAdmin();
     return this.http.delete<Administrator>(`${this.API}/${id}`).pipe(catchError(this.handleError));
   }

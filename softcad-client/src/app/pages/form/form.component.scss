@@ -1,15 +1,11 @@
-.result.ng-invalid.ng-touched {
-    border:1px solid rgb(160, 0, 0);
-}
-
-.prim-descricao{
+.prim-description{
     position: relative;
     color: hsla(0, 0%, 0%, 0.500);
     top: 5px;
     font-size: 16pt;
 }
 
-.descricao{
+.description{
     font-size: 12pt;
     margin:0;
     margin-bottom: 10px;
@@ -24,7 +20,7 @@
     margin-left: 1em;
 }
 
-.fatos-dados{
+.facts-data{
     display: flex;
     align-items: center;
     justify-content: space-between;

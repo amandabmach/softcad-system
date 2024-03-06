@@ -6,44 +6,44 @@ import { Injectable } from '@angular/core';
 export class AdministradorService {
 
   id!: number;
-  nome!: string;
+  name!: string;
   email!: string;
-  foto!: any;
+  photo!: any;
 
   constructor() { }
 
   setAdminPhoto(data: any, foto: any){
     this.id = data.id;
-    this.nome = data.nome;
+    this.name = data.name;
     this.email = data.email;
-    this.foto = foto;
+    this.photo = foto;
   }
 
   setAdministrador(data: any){
     this.id = data.id;
-    this.nome = data.nome;
+    this.name = data.name;
     this.email = data.email;
-    this.foto = "../../../../assets/imagens/user.png";
+    this.photo = "../../../../assets/image/user.png";
   }
 
   getAdministrador(){
     return {
       id: this.id,
-      nome: this.nome,
+      name: this.name,
       email: this.email,
-      foto: this.foto
+      photo: this.photo
     };
   }
 
   setPhoto(photo: any){
     if(photo != null){
-      this.foto = photo;
+      this.photo = photo;
     } else {
-      this.foto = "../../../../assets/imagens/user.png";
+      this.photo = "../../../../assets/image/user.png";
     }
   }
   
   getPhoto(){
-    return this.foto;
+    return this.photo;
   }
 }

@@ -14,19 +14,19 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, title:'OC | Login'},
-  { path: 'criar-conta', component: CreateAccountComponent, title:'OC | Criar Conta'},
+  { path: 'login', component: LoginComponent, title:'SC | Login'},
+  { path: 'criar-conta', component: CreateAccountComponent, title:'SC | Criar Conta'},
   { path: '',
     component: LayoutComponent,
     children:[
       { path: '', redirectTo: '/login', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent, title:'OC | Página Inicial'},
-      { path: 'novo-cadastro', component: FormComponent, title:'OC | Novo Cadastro'},
-      { path: 'cadastros', component: UserRegistrationComponent, title:'OC | Cadastros'},
-      { path: 'relatorios', component: ReportComponent, title:'OC | Relatórios'},
-      { path: 'logs', component: LogControlComponent, title:'OC | Controle de Logs'},
-      { path: 'listagem', component: UsersListComponent, title:'OC | Lista de Usuários'},
-  ], canActivate: [authGuard]},
+      { path: 'home', component: HomeComponent, title:'SC | Página Inicial'},
+      { path: 'novo-cadastro', component: FormComponent, title:'SC | Novo Cadastro'},
+      { path: 'cadastros', component: UserRegistrationComponent, title:'SC | Cadastros'},
+      { path: 'relatorios', component: ReportComponent, title:'SC | Relatórios'},
+      { path: 'logs', component: LogControlComponent, title:'SC | Controle de Logs'},
+      { path: 'listagem', component: UsersListComponent, title:'SC | Lista de Usuários'},
+  ]},
   { path: '**', component: PageNotFoundComponent }
 
 ];

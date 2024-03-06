@@ -24,14 +24,14 @@ export class ModalFormComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(200)]],
+      name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(200)]],
       email: [null, [Validators.required, Validators.email,  Validators.minLength(5), Validators.maxLength(200)]],
-      idade: [null, Validators.required],
-      endereco: [null, Validators.required],
-      informacoes: [null, [Validators.maxLength(255)]],
-      interesses: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-      sentimentos: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-      valores: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]]
+      age: [null, Validators.required],
+      address: [null, Validators.required],
+      information: [null, [Validators.maxLength(255)]],
+      interests: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      feelings: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      principles: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]]
     });
   }
 
@@ -77,14 +77,14 @@ export class ModalFormComponent implements OnInit, OnChanges {
 
   setValues(user: any) {
     this.formulario.patchValue({
-      nome: user.nome,
+      name: user.name,
       email: user.email,
-      idade: user.idade,
-      endereco: user.endereco,
-      informacoes: user.informacoes,
-      interesses: user.interesses,
-      sentimentos: user.sentimentos,
-      valores: user.valores
+      age: user.age,
+      address: user.address,
+      information: user.information,
+      interests: user.interests,
+      feelings: user.feelings,
+      principles: user.principles
     })
   }
 }

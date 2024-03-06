@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit{
 
   constructor(
     private service: DashboardRequestService, 
-    private userService: UsersRequestService,
+    private userService: UsersRequestService
   ){}
 
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using softcad_web_api.Domain.Models;
 using WebApiOperacaoCuriosidade.Application.Services.Interfaces;
 using WebApiOperacaoCuriosidade.Domain.Account;
 using WebApiOperacaoCuriosidade.Domain.DTOs;
@@ -40,14 +41,17 @@ namespace WebApiOperacaoCuriosidade.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(AdminDTO adminDTO)
+        public ActionResult<AdminToken> Create(AdminDTO adminDTO)
         {
             var adminCreate = _adminService.Insert(adminDTO);
 
             var token = _authenticate.GenerateToken(Convert.ToInt32(adminCreate.Id), adminCreate.Email);
 
-            return Ok(token);
-            
+            return new AdminToken
+            {
+                Token = token,
+            };
+
         }
 
         [HttpDelete("{id}")]
@@ -78,13 +82,16 @@ namespace WebApiOperacaoCuriosidade.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult Authenticator([FromBody]Credentials credentials)
+        public ActionResult<AdminToken> Authenticator([FromBody]Credentials credentials)
         {
             var admin = _adminService.Authenticator(credentials);
 
             var token = _authenticate.GenerateToken(Convert.ToInt32(admin.Id), admin.Email);
 
-            return Ok(token);
+            return new AdminToken
+            {
+                Token = token,
+            };
         }
 
 

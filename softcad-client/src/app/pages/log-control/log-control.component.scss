@@ -11,7 +11,6 @@
 }
 
 p {
-   // margin-left: 1em;
     color: rgb(126, 126, 126);
     font-weight: bold;
 }
@@ -95,44 +94,14 @@ tr:hover{
     cursor: pointer;
 }
 
-.initial {
-    flex: initial;
-}
-
-.auto {
-    flex: auto;
-}
-
-.ten{
-    flex: 10;
-}
-
-.none {
-    flex: none;
-}
-.seven {
-    flex: 7;
-}
-.six{
-    flex: 6;
-}
-
-.five{
-    flex: 5;
-}
-
-.four {
-    flex: 4;
-}
-
-.three{
-    flex: 3;
-}
-
-.two {
-    flex: 2;
-}
-
-.one {
-    flex: 1;
-}
+.initial { flex: initial; }
+.auto { flex: auto; }
+.ten { flex: 10; }
+.none { flex: none; }
+.seven { flex: 7; }
+.six { flex: 6; }
+.five { flex: 5; }
+.four { flex: 4; }
+.three { flex: 3; }
+.two { flex: 2; }
+.one { flex: 1; }

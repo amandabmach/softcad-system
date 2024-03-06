@@ -7,7 +7,7 @@
   </thead>
   <tbody>
       <tr *ngFor="let user of filteredData" (click)="userClicked(user)" >
-      <td>{{user.nome}}</td>
+      <td>{{user.name}}</td>
       <td>{{user.email}}</td>
       <td class="status">{{user.status}}</td>
     </tr>

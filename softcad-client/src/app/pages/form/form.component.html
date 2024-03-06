@@ -1,53 +1,53 @@
 <div class="page-content">
-    <form [formGroup]="formulario">            
-        <div class="fatos-dados">
-            <h5 class="prim-descricao">Novo Cadastro</h5>
+    <form [formGroup]="form">            
+        <div class="facts-data">
+            <h5 class="prim-description">Novo Cadastro</h5>
             <div class="status">   
                 <input type="checkbox" id="status" formControlName="status" name="status">
                 <label for="check">Ativo</label>
             </div>
         </div>
         <div class="item dez">
-            <h5 class="descricao">1° Fatos e Dados</h5>
-            <label for="nome">Nome</label>
-            <input type="text" formControlName="nome" id="nome">
-            <app-error-message [control]="formulario.get('nome')" label="nome"></app-error-message>
+            <h5 class="description">1° Fatos e Dados</h5>
+            <label for="name">Nome</label>
+            <input type="text" formControlName="name" id="name">
+            <app-error-message [control]="form.get('name')" label="name"></app-error-message>
         </div>
         <div class="container-form">
             <div class="item two">
-                <label for="idade">Idade</label>
-                <input type="idade" formControlName="idade" id="idade">
-                <app-error-message [control]="formulario.get('idade')" label="idade"></app-error-message>
+                <label for="age">Idade</label>
+                <input type="age" formControlName="age" id="age">
+                <app-error-message [control]="form.get('age')" label="age"></app-error-message>
             </div>
             <div class="item ten">
                 <label for="email">Email</label>
                 <input type="email" formControlName="email" id="email">
-                <app-error-message [control]="formulario.get('email')" label="email"></app-error-message>
+                <app-error-message [control]="form.get('email')" label="email"></app-error-message>
             </div>
         </div>
         <div class="item auto">
-            <label for="endereco">Endereço</label>
-            <input type="endereco" formControlName="endereco" id="endereco">
-            <app-error-message [control]="formulario.get('endereco')" label="endereco"></app-error-message>
+            <label for="address">Endereço</label>
+            <input type="address" formControlName="address" id="address">
+            <app-error-message [control]="form.get('address')" label="address"></app-error-message>
         </div>
         <div class="item auto">
-            <label for="informacoes">Outras informações</label>
-            <input type="informacoes" formControlName="informacoes" id="informacoes">
+            <label for="information">Outras informações</label>
+            <input type="information" formControlName="information" id="information">
         </div>
         <div class="item auto">
-            <label for="interesses"><h5 class="descricao">2° Interesses</h5></label>
-            <textarea type="interesses" formControlName="interesses" id="interesses" rows="4"></textarea>
-            <app-error-message [control]="formulario.get('interesses')" label="interesses"></app-error-message>
+            <label for="interests"><h5 class="description">2° Interesses</h5></label>
+            <textarea type="interests" formControlName="interests" id="interests" rows="4"></textarea>
+            <app-error-message [control]="form.get('interests')" label="interests"></app-error-message>
         </div>
         <div class="item auto">
-            <label for="sentimentos"><h5 class="descricao">3° Sentimentos</h5></label>
-            <textarea type="sentimentos" formControlName="sentimentos" id="sentimentos" rows="4"></textarea>
-            <app-error-message [control]="formulario.get('sentimentos')" label="sentimentos"></app-error-message>
+            <label for="feelings"><h5 class="description">3° Sentimentos</h5></label>
+            <textarea type="feelings" formControlName="feelings" id="feelings" rows="4"></textarea>
+            <app-error-message [control]="form.get('feelings')" label="feelings"></app-error-message>
         </div>
         <div class="item auto">
-            <label for="valores"><h5 class="descricao">4° Valores</h5></label>
-            <textarea type="valores" formControlName="valores" id="valores"rows="4"></textarea>
-            <app-error-message [control]="formulario.get('valores')" label="valores"></app-error-message>
+            <label for="principles"><h5 class="description">4° Valores</h5></label>
+            <textarea type="principles" formControlName="principles" id="principles"rows="4"></textarea>
+            <app-error-message [control]="form.get('principles')" label="principles"></app-error-message>
         </div>
         <div class="button">
             <button type="submit" (click)="onSubmit()">GRAVAR</button>

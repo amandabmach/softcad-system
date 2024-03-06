@@ -1,15 +1,8 @@
 @charset "UTF-8";
 
-#criar-conta{
+#created-account{
     display: none;
 }
-
-.result.ng-invalid.ng-touched {
-    border:1px solid rgb(160, 0, 0); /* Altere a cor da borda para vermelho */
-    color:rgb(160, 0, 0);
-
-}
-
 .container-form{
     display: flex;
     position: absolute;
@@ -69,7 +62,7 @@ input{
     letter-spacing: 1.5px;
 }
 
-.bt-submit, .bt-criar{
+.bt-submit, .bt-created{
     cursor: pointer;
     display: block;
     width: 140px;
@@ -101,11 +94,11 @@ h1{
     font-size: 19pt;
 }
 
-.redes-sociais{
+.social-media{
     display: flex;
 }
 
-.redes-sociais > a {
+.social-media > a {
     cursor: pointer;
     margin: 0.6em;
 }
@@ -141,11 +134,12 @@ h1{
 
 @media screen and (min-width: 768px) {
     
-    form{
+    form {
         width: 500px;
         height: 480px;
     }
-    #criar-conta{
+
+    #created-account {
         display: flex;
     }
 

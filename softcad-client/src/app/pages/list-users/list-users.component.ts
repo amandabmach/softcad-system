@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class UsersListComponent {
   
-  imprimir() {
+  print() {
     window.print();
   }
 

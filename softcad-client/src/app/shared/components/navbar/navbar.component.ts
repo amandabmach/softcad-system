@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit{
   admin: any;
   photoProfile: any;
-  sidebarVisible = false;
+  sidebarVisible: boolean = false;
   changed!: Subscription;
 
   constructor(
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit{
   }
 
   getAdministrador(){
-    this.service.getAdministrador().subscribe(dados => {
+    this.service.getAdministrator().subscribe(dados => {
       var admin = dados;
       if(admin.photo != null){
         this.service.getPhotoProfile().subscribe(foto =>{

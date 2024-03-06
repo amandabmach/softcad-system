@@ -17,7 +17,6 @@ table{
     overflow-y: auto;
 
     width: 78vw;
-    /* height: 90vh; */
     background-color: white;
     font-family: var(--fonteRoboto);
     font-size: 10pt;
@@ -49,13 +48,13 @@ tr:hover {
     background-color: rgb(243, 243, 243);
 }
 
-#legenda{
+.legend {
     display: flex;
     justify-content: space-between;
     margin: 0.5em 0em 0em 1em;
 }
 
-#legenda > h3{
+.legend > h3{
     position: relative;
     color: hsla(0, 0%, 0%, 0.500);
     top: 5px;

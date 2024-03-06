@@ -17,7 +17,7 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
         {
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
-                const string sql = "SELECT COUNT(*) FROM Usuarios WHERE Status = 0 AND AdministradorId = @adminId";
+                const string sql = "SELECT COUNT(*) FROM Users WHERE Status = 0 AND AdministratorId = @adminId";
 
                 var amount = sqlConnection.Query<int>(sql, new { adminId }).Single();
 
@@ -29,7 +29,7 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
         {
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
-                const string sql = "SELECT COUNT(*) FROM Usuarios WHERE MONTH(DataCadastro) = @mes AND AdministradorId = @adminId";
+                const string sql = "SELECT COUNT(*) FROM Users WHERE MONTH(RegistrationDate) = @month AND AdministratorId = @adminId";
 
                 var amount = sqlConnection.Query<int>(sql, new { month, adminId }).Single();
 
@@ -41,7 +41,7 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
         {
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
-                const string sql = "SELECT COUNT(*) FROM Usuarios WHERE AdministradorId = @adminId";
+                const string sql = "SELECT COUNT(*) FROM Users WHERE AdministratorId = @adminId";
 
                 var amount = sqlConnection.Query<int>(sql, new { adminId }).Single();
 

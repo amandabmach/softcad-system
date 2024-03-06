@@ -39,5 +39,4 @@ export class LogControlComponent implements OnInit{
     this.log = log;
     this.modal = true;  
   }
-
 }

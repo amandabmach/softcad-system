@@ -11,7 +11,7 @@ import { AlertService} from '../../services/alert.service';
   styleUrl: './create-account.component.scss'
 })
 export class CreateAccountComponent implements OnInit{
-  formulario!: FormGroup;
+  form!: FormGroup;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -22,7 +22,7 @@ export class CreateAccountComponent implements OnInit{
 
   ngOnInit(){
     localStorage.clear();
-    this.formulario = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       email: [null, [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(255)]],
       password: [null, [Validators.required, Validators.pattern(/(?=^.{8,20}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]]
@@ -30,8 +30,8 @@ export class CreateAccountComponent implements OnInit{
   }
 
   onSubmit(){
-    if(this.formulario.valid){
-      this.service.createAdministrador(this.formulario.value).subscribe({
+    if(this.form.valid){
+      this.service.createAdministrator(this.form.value).subscribe({
         next: () => {
           this.alert.showAlertSuccess("Usuário criado com sucesso!");
           this.router.navigate(['/home'])

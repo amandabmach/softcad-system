@@ -1,9 +1,9 @@
 <div class="overlay" *ngIf="modal"></div>
 <div class="myModal" *ngIf="modal">
     <div class="modal">
-        <div class="topo">
+        <div class="top">
             <div>
-                <h3 class="titulo-modal">Detalhes do log</h3>
+                <h3 class="title-modal">Detalhes do log</h3>
             </div>
             <span class="close" (click)="onChangeModal()">&times;</span>
         </div>
@@ -21,16 +21,16 @@
 
             <div class="container-form">
                 <div class="item four">
-                    <label for="operacao">Operação</label>
-                    <input type="text" name="operacao" id="operacao" [(ngModel)]="log.operation" readonly>
+                    <label for="operation">Operação</label>
+                    <input type="text" name="operation" id="operation" [(ngModel)]="log.operation" readonly>
                 </div>
                 <div class="item four">
-                    <label for="datahora">Data/Hora</label>
-                    <input type="text" name="datahora" id="datahora" [(ngModel)]="log.timestamp" readonly>
+                    <label for="datetime">Data/Hora</label>
+                    <input type="text" name="datetime" id="datetime" [(ngModel)]="log.timestamp" readonly>
                 </div>
                 <div class="item four">
-                    <label for="resultado">Resultado</label>
-                    <input type="text" name="resultado" id="resultado" [(ngModel)]="log.result" readonly>
+                    <label for="result">Resultado</label>
+                    <input type="text" name="result" id="result" [(ngModel)]="log.result" readonly>
                 </div>
             </div>
 
@@ -43,17 +43,17 @@
 
             <div class="container-form">
                 <div class="item auto">
-                    <label for="mensagem">Mensagem de Erro</label>
-                    <input type="text" name="mensagem" id="mensagem" [(ngModel)]="log.message" readonly>
+                    <label for="message">Mensagem de Erro</label>
+                    <input type="text" name="message" id="message" [(ngModel)]="log.message" readonly>
                 </div>
             </div>
             <div class="item auto">
                 <label for="id">Antes</label>
-                <textarea type="text" id="antes" name="antes" [(ngModel)]="log.previousState" readonly rows="4"></textarea>
+                <textarea type="text" id="before" name="before" [(ngModel)]="log.previousState" readonly rows="4"></textarea>
             </div>
             <div class="item auto">
                 <label for="user">Depois</label>
-                <textarea type="text" id="depois" name="depois" [(ngModel)]="log.currentState" readonly rows="4"></textarea>
+                <textarea type="text" id="after" name="after" [(ngModel)]="log.currentState" readonly rows="4"></textarea>
             </div>
 
         </form>
