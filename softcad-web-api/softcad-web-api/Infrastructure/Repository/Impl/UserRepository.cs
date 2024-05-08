@@ -116,6 +116,7 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
             {
                 var parameters = new
                 {
+                    user.Id,
                     user.Name,
                     user.Age,
                     user.Email,
@@ -129,17 +130,17 @@ namespace WebApiOperacaoCuriosidade.Infrastructure.Repository.Impl
                 };
 
                 const string sql = @"
-                    UPDATE Usuarios
+                    UPDATE Users
                     SET 
-                        Nome = @Nome, 
+                        Name = @Name, 
                         Email = @Email, 
-                        Idade = @Idade, 
-                        Endereco = @Endereco, 
-                        Informacoes = @Informacoes, 
-                        Interesses = @Interesses, 
-                        Sentimentos = @Sentimentos, 
-                        Valores = @Valores,
-                        UltimaModificacao = @UltimaModificacao
+                        Age = @Age, 
+                        Address = @Address, 
+                        Information = @Information, 
+                        Interests = @Interests, 
+                        Feelings = @Feelings, 
+                        Principles = @Principles,
+                        LastModification = @LastModification
                     WHERE 
                         Id = @Id
                 ";

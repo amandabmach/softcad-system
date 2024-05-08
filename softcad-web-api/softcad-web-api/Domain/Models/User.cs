@@ -14,7 +14,7 @@ namespace WebApiOperacaoCuriosidade.Domain.Models
         public string Interests { get; set;}
         public string Feelings { get; set;}
         public string Principles { get; set;}
-        public Status Status { get; set; }
+        public bool Status { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime LastModification { get; set; }
         public int AdministratorId { get; set; }

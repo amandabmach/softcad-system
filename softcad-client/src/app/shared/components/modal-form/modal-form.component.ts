@@ -27,7 +27,7 @@ export class ModalFormComponent implements OnInit, OnChanges {
       name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(200)]],
       email: [null, [Validators.required, Validators.email,  Validators.minLength(5), Validators.maxLength(200)]],
       age: [null, Validators.required],
-      address: [null, Validators.required],
+      address: [null],
       information: [null, [Validators.maxLength(255)]],
       interests: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       feelings: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],

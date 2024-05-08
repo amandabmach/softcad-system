@@ -10,7 +10,7 @@
         public string? Information { get; set; }
         public string Interests { get; set; }
         public string Feelings { get; set; }
-        public string Values { get; set; }
+        public string Principles { get; set; }
         public bool Status { get; set; }
         public int AdministratorId { get; set; }
 

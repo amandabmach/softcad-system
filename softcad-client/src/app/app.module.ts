@@ -59,7 +59,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     OperationPipe,
     ResultPipe,
     ModalLogsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

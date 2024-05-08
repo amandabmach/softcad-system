@@ -57,7 +57,7 @@
         </form>
         <div class="buttons-change">
             <button class="bt-delete" (click)="onDelete()">Deletar</button>
-            <button class="bt-change" (click)="onUpdate()">Salvar alterações</button>
+            <button class="bt-change" (click)="onUpdate()" [disabled]="!formulario.valid">Salvar alterações</button>
         </div>
     </div>
 </div>

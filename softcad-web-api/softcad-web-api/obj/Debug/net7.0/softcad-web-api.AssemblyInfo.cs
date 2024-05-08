@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("softcad-web-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+226e9f839bb05b719af2c38178ec0891f4c3da0f")]
 [assembly: System.Reflection.AssemblyProductAttribute("softcad-web-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("softcad-web-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

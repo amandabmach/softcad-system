@@ -106,3 +106,4 @@ C:\Users\AmandaBeatrizMachado\OneDrive - ForLogic\projetos\softcad-system\softca
 C:\Users\AmandaBeatrizMachado\OneDrive - ForLogic\projetos\softcad-system\softcad-web-api\softcad-web-api\obj\Debug\net7.0\softcad-web-api.pdb
 C:\Users\AmandaBeatrizMachado\OneDrive - ForLogic\projetos\softcad-system\softcad-web-api\softcad-web-api\obj\Debug\net7.0\softcad-web-api.genruntimeconfig.cache
 C:\Users\AmandaBeatrizMachado\OneDrive - ForLogic\projetos\softcad-system\softcad-web-api\softcad-web-api\obj\Debug\net7.0\ref\softcad-web-api.dll
+C:\Users\amand\OneDrive\projects\softcad-system\softcad-web-api\softcad-web-api\obj\Debug\net7.0\softcad-web-api.sourcelink.json

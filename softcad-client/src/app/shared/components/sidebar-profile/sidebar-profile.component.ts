@@ -63,7 +63,7 @@ export class SidebarProfileComponent implements OnInit{
       this.alert.showConfirm("Atualizar dados da conta", "Tem certeza que deseja atualizar seus dados?", "Sim", "Não").subscribe(dados => {
         if (dados) {
           if (this.file != null) {
-            const body = { ...this.formulario.value, foto: this.file }
+            const body = { ...this.formulario.value, foto: this.photo }
             this.service.updateAdministrator(body).subscribe({
               complete: () => {
                 this.alert.showAlertSuccess("Perfil atualizado com sucesso"),
